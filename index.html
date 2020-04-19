@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Barbrawler RPG</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!-- <div class="dev-only">
+		<button id="delete_data">delete data</button>
+		<button onclick="show('main-menu')">main-menu</button>
+		<button onclick="show('character-build')">char build</button>
+		<button onclick="show('main-town')">main town</button>
+		<button onclick="show('battle-scene')">battle scene</button>
+		<button onclick="showAll()">show all</button>
+	</div> -->
+	<!-- ====================== -->
+
+	<main class="game">
+		<div class="alert">alert</div>
+		<button class="skip-tutorial" id="skip_tutorial">skip tutorial</button>
+		
+		<!-- Main Menu -->
+		<section class="section main-menu">
+			<h1>Barbrawler RPG</h1>
+			<button id="play_game">play</button>
+			<button id="show_credits">credits</button>
+		</section>
+		
+		<!-- Character Build -->
+		<section class="section character-build">
+			<button class="back-to-main">back to main-menu</button>
+			<div class="flex-container">
+				<div class="prologue">
+					<h3>Brawlbarrow Hamlet</h3>
+					<p class="prologue__desc">
+						Brawlbarrow Hamlet is a small human settlement. Designed on the lowest point, the settlement of Brawlbarrow is home to a bunch of brawlers lead by Rixhammer, the best brawler. 
+						<br><br>This settlement wasn't built by accident, as it has emotional significance, which is of great importance to the people of Brawlbarrow. 
+						<br><br>The settlement itself looks crude. With its decaying rooftops, worn sandstone walls and dirty roads, Brawlbarrow has a grim atmosphere. The main attraction is the Brawler Hall, which was built 55 years ago and designed by First Brawlers. 
+						<br><br>Brawlbarrow has a thriving economy, which is mainly supported by thieving, beer brewing and woodcrafting. But their biggest strengths are alchemy and refined cigarette rolling. However, Brawlbarrow lacks people skilled in fishing. 
+						<br><br>Despite its strengths and weaknesses, Brawlbarrow is most likely headed towards a macabre future under the leadership of Rixhammer. But this remains to be seen.
+					</p>
+				</div>
+				<div class="character-build__form">
+					...and,
+					<h3>Who Are You?</h3>
+					<label for="name">Name:</label><br>
+					<input type="text" name="name" value="Brawler" id="char_name">
+
+					<div class="btn-wrapper">
+						<button id="create_char">go to brawlbarrow!</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ====================================== -->
+	
+		<!-- MAIN TOWN -->
+		<section class="section main-town">
+			<h3>Brawlbarrow Hamlet</h3>
+			<div class="home-menu" id="trig__bar">Bar</div>
+			<div class="home-menu" id="trig__brawler-hall">Brawler's Hall</div>
+			<div class="home-menu" id="trig__training-yard">Training Yard</div>
+			<div class="home-menu" id="trig__shop">Shop</div>
+			<div class="profile">
+				<h4 id="p_name">Profile</h4>
+				<p>title: <span id="p_title">null</span></p>
+				<p>health: <span id="p_health">0</span></p>
+				<p>stamina: <span id="p_stamina">0</span></p>
+				<p>strength: <span id="p_strength">0</span></p>
+				<p>agility: <span id="p_agility">0</span></p>
+				<button id="delete_char">delete character</button>
+			</div>
+		</section>
+	
+		<!-- Training Yard -->
+		<section class="section main-town__training-yard">
+			<button class="back-to-town">back to town</button>
+			<h3>Training Yard</h3>
+			<button id="fight_barrel">Barrel</button>
+			<button id="fight_drunken_brawler">Drunken Brawler</button>
+		</section>
+
+		<!-- Bar -->
+		<section class="section main-town__bar">
+			<button class="back-to-town">back to town</button>
+			<h3>Bar</h3>
+			<p>Welcome to the real battle arena, Brawlbarrow's Bar.</p>
+			<button id="fight_random">Brawl!</button>
+		</section>
+
+		<!-- Brawler Hall -->
+		<section class="section main-town__brawler-hall">
+			<button class="back-to-town">back to town</button>
+			<h3>Brawler Hall</h3>
+			<p><strong>Rixhammer:</strong><i>"What do you want?"</i></p>
+		</section>
+
+		<section class="section main-town__shop">
+			<button class="back-to-town">back to town</button>
+			<h3>Shop</h3>
+		</section>
+
+		<!-- ====================================== -->
+		
+		<!-- *Battle Scene -->
+		<section class="section battle-scene">
+			<header class="battle-scene__header"><h3>Brawl!</h3></header>
+
+			<div class="flex-container">
+				<div class="battle-scene__ui player">
+					<div>picture</div>
+					<p><span id="player_name"></span></p>
+
+					<p>health: <span id="player_health_bar">0</span></p>
+					<p>stamina: <span id="player_stamina_bar">0</span>/<span id="player_max_stamina">0</span></p>
+					<p>stance: <span id="player_stance_bar">0</span></p>
+					<button class="player__action--rest" id="player_rest">rest</button>
+					<button class="player__action--attack" id="attack_left">left</button>
+					<button class="player__action--attack" id="attack_right">right</button>
+				</div>
+				<div class="battle-scene__ui enemy">
+					<div>picture</div>
+					<p><span id="enemy_name">enemy</span></p>
+
+					<p>health: <span id="enemy_health_bar">0</span></p>
+					<p>stamina: <span id="enemy_stamina_bar">0</span>/<span id="enemy_max_stamina">0</span></p>
+					<p>stance: <span id="enemy_stance_bar">0</span></p>
+					<!-- <button class="enemy__attack" id="attack_left">left</button>
+					<button class="enemy__attack" id="attack_right">right</button> -->
+				</div>
+			</div>
+		</section>
+
+		<!-- Credits -->
+		<section class="section credits">
+			<button class="back-to-main">back to main-menu</button>
+			<p>Barbrawler RPG, <i>inspired by Book of Mages (Nob Studio)</i></p>
+			<p>Faris Han</p>
+			<p>Indonesia, 2018</p>
+		</section>
+
+
+	</main>
+
+
+
+	<script src="jquery.min.js"></script>
+	<script src="enemy_database.js"></script>
+	<script src="config.js"></script>
+	<script src="quest.js"></script>
+	<script src="tutorial.js"></script>
+	<script src="battle.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>
