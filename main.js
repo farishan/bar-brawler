@@ -1,14 +1,11 @@
 
-$(document).ready(function(e){
-
+$(window).on('load', function(){
 	// dev only
-	$('#delete_data').click(function(e){
+	$('#delete_data').on('click', function(){
 		deleteData();
 	});
 	$('.main-menu').show();
 	// ==========================
-
-
 
 	checkAuth();
 	checkTutorial();
@@ -20,13 +17,13 @@ $(document).ready(function(e){
 });
 
 function checkAuth(){
-	if(localStorage.getItem("bbData")){
-		localStorage.setItem("bbAuth", true)
+	if(localStorage.getItem(STORAGE_KEY)){
+		localStorage.setItem(AUTH_KEY, true)
 
-		var bbUser = JSON.parse(localStorage.getItem("bbData"));
-		console.log(bbUser)
+		var savedPlayer = JSON.parse(localStorage.getItem(STORAGE_KEY));
+		console.log(savedPlayer)
 
-		player.name = bbUser.name;
+		player.name = savedPlayer.name;
 
 		profileRender();
 		show('main-town');
@@ -39,8 +36,8 @@ function checkAuth(){
 function mainMenuController(){
 	$('#play_game').click(function(e){
 		console.log('start')
-		var bbData = localStorage.getItem("bbData");
-		if(bbData){
+		var savedData = localStorage.getItem(STORAGE_KEY);
+		if(savedData){
 			show('main-town');
 		}else{
 			show('character-build');
@@ -60,7 +57,7 @@ function charMakingScene(){
 		if(name && name !== " "){
 			console.log("inputed name: "+name);
 
-			var bbUser = {
+			var playerToSave = {
 				name: name,
 				title: default_title,
 				health: init_health,
@@ -71,10 +68,10 @@ function charMakingScene(){
 			}
 
 			// save user to local
-			save(bbUser);
+			save(playerToSave);
 
 			// set auth
-			localStorage.setItem("bbAuth", true);
+			localStorage.setItem(AUTH_KEY, true);
 
 			checkAuth();
 			checkTutorial();
@@ -113,8 +110,8 @@ function townMenuController(){
 	$('#delete_char').click(function(e){
 		var c = confirm("Are you sure to delete this character?");
 		if(c){
-			localStorage.removeItem("bbData");
-			localStorage.removeItem("bbAuth");
+			localStorage.removeItem(STORAGE_KEY);
+			localStorage.removeItem(AUTH_KEY);
 
 			player.name = 'player';
 			profileRender();
@@ -153,12 +150,12 @@ function profileRender(){
 }
 
 function save(data){
-	localStorage.setItem("bbData", JSON.stringify(data));
+	localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 	console.log("saved");
 }
 
 function deleteData(data){
-	localStorage.removeItem("bbData");
+	localStorage.removeItem(STORAGE_KEY);
 }
 
 function Alert(msg, t){
@@ -171,9 +168,9 @@ function Alert(msg, t){
 	}
 }
 
-function show(cls){
+function show(sectionClass){
 	$('.section').hide();
-	$('.'+cls).show();
+	$('.'+sectionClass).show();
 }
 
 function showAll(){

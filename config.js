@@ -1,3 +1,6 @@
+var AUTH_KEY = 'bbAuth';
+var STORAGE_KEY = 'bbData';
+
 var max_aspd = 10;
 var max_strength = 99;
 var max_agility = 99;

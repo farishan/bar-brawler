@@ -46,6 +46,7 @@ button {
 }
 section.section {
 	display: none;
+  padding: 5px;
 }
 .skip-tutorial {
 	display: none;
