@@ -121,7 +121,6 @@ var battle = {
 			var p_stance = player.stance;
 			// fill player stance based on aspd
 			var p_filling = setInterval(function(e){
-				
 				if(p_stance<100){
 					p_stance+=player.aspd;
 
@@ -199,13 +198,22 @@ var battle = {
 		console.log('battle end')
 		$('.alert').hide('fast');
 		show('main-town__training-yard');
+
+    $('.home-menu').removeClass('disabled');
+    $('#skip_tutorial').hide();
+    $('#fight_drunken_brawler').attr('disabled', false);
+
+    var data = localStorage.getItem(STORAGE_KEY);
+    var parsed = JSON.parse(data);
+    parsed.tutorial = false;
+    save(parsed);
 	}
 };
 
 $(document).ready(function(e){
 	// start battle scene
 	// battle.start();
-	
+
 	actionController();
 });
 

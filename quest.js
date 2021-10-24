@@ -7,6 +7,7 @@ function checkTutorial(){
 			$('.home-menu').addClass('disabled');
 			$('#trig__training-yard').removeClass('disabled');
 			$('#skip_tutorial').show();
+      $('#fight_drunken_brawler').attr('disabled', true);
 		}
 	}
 }
